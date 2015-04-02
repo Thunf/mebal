@@ -1,0 +1,26 @@
+{
+  "name": "melab",
+  "version": "1.0.0",
+  "description": "Lab for code collections on Internet",
+  "keywords": [
+    "css",
+    "less",
+    "lab",
+    "code",
+    "collections"
+  ],
+  "homepage": "https://github.com/Thunf/melab",
+  "author": "Thunf",
+  "main": "./dist/**/*.*",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Thunf/melab.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Thunf/melab/issues"
+  },
+  "license": "MIT"
+}

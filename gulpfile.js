@@ -30,7 +30,7 @@ gulp.task('jshint',function(){
 //js连接、压缩、歧义化
 gulp.task('jsmini',['jshint'],function(){
 	return gulp.src(oPath.js)
-		.pipe(concat('melab.js'))
+		.pipe(concat('mebal.js'))
 		.pipe(gulp.dest(uPath.js))
 		.pipe(uglify())
 		.pipe(rename({
@@ -43,7 +43,7 @@ gulp.task('jsmini',['jshint'],function(){
 //css连接、压缩
 gulp.task('cssmini',['less'],function(){
 	return gulp.src(oPath.tmp)
-		.pipe(concat('melab.css'))
+		.pipe(concat('mebal.css'))
 		.pipe(gulp.dest(uPath.css))
 		.pipe(cssminify())
 		.pipe(rename({

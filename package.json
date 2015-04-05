@@ -1,5 +1,5 @@
 {
-  "name": "melab",
+  "name": "mebal",
   "version": "1.0.0",
   "description": "Lab for code collections on Internet",
   "keywords": [
@@ -9,7 +9,7 @@
     "code",
     "collections"
   ],
-  "homepage": "https://github.com/Thunf/melab",
+  "homepage": "https://github.com/Thunf/mebal",
   "author": "Thunf",
   "main": "./dist/**/*.*",
   "devDependencies": {
@@ -26,10 +26,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Thunf/melab.git"
+    "url": "https://github.com/Thunf/mebal.git"
   },
   "bugs": {
-    "url": "https://github.com/Thunf/melab/issues"
+    "url": "https://github.com/Thunf/mebal/issues"
   },
   "license": "MIT"
 }

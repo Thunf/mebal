@@ -97,4 +97,18 @@
 		}
 	}
 }
-	
+
+@keyframes spin {
+	from { transform: rotateY(0); }
+	to { transform: rotateY(360deg); }
+}
+@-webkit-keyframes spin {
+	from { -webkit-transform: rotateY(0); }
+	to { -webkit-transform: rotateY(360deg); }
+}
+
+.cube {
+	animation: spin 5s infinite linear;
+	-webkit-animation: spin 5s infinite linear;
+}
+		

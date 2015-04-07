@@ -52,4 +52,49 @@
 	}
 		
 }
-		
+
+.demo-cube{
+	&.wrap {
+		perspective: 800px;
+		perspective-origin: 50% 100px;
+
+		.cube {
+			position: relative;
+			width: 200px;
+			transform-style: preserve-3d;
+
+			div{
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				background: red;
+				opacity: .5;
+				border: 1px solid #999;
+			}
+
+			.back {
+				transform: translateZ(-100px) rotateY(180deg);
+			}
+			.right {
+				transform: rotateY(-270deg) translateX(100px);
+				transform-origin: top right;
+			}
+			.left {
+				transform: rotateY(270deg) translateX(-100px);
+				transform-origin: center left;
+			}
+			.top {
+				transform: rotateX(-90deg) translateY(-100px);
+				transform-origin: top center;
+			}
+			.bottom {
+				transform: rotateX(90deg) translateY(100px);
+				transform-origin: bottom center;
+			}
+			.front {
+				transform: translateZ(100px);
+			}
+		}
+	}
+}
+	

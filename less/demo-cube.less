@@ -1,0 +1,127 @@
+.demo-cube{
+	margin-left: 200px;
+	&.wrap {
+		perspective: 800px;
+		perspective-origin: 50% 100px;
+
+		.cube {
+			position: relative;
+			width: 200px;
+
+			height: 200px;
+			background: purple;
+			opacity: .5;
+			line-height: 1rem;
+
+			transform-style: preserve-3d;
+
+			animation: spin 5s infinite linear;
+			-webkit-animation: spin 5s infinite linear;
+
+			div{
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				background: red;
+				opacity: .5;
+				border: 1px solid #fff;
+
+				margin-top: -1rem;
+			}
+
+			.front {
+				transform: translateZ(100px);
+			}
+			.back {
+				transform: translateZ(-100px) rotateY(180deg);
+			}
+			.left {
+				transform: rotateY(-90deg) translateX(-100px);
+				transform-origin: center left;
+			}
+			.right {
+				transform: rotateY(90deg) translateX(100px);
+				transform-origin: top right;
+			}
+			.top {
+				transform: rotateX(-90deg) translateY(-100px);
+				transform-origin: top center;
+			}
+			.bottom {
+				transform: rotateX(90deg) translateY(100px);
+				transform-origin: bottom center;
+			}
+		}
+
+		.cube1 {
+			position: absolute;
+			margin: 50px;
+
+			width: 100px;
+			height: 100px;
+			background: black;
+			opacity: .5;
+			line-height: 1rem;
+			color: white;
+
+			transform-style: preserve-3d;
+
+			transform-origin: 0 50px;
+			animation: spin-vertical 5s infinite linear;
+			-webkit-animation: spin-vertical 5s infinite linear;
+
+			div{
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				background: blue;
+				opacity: .5;
+				border: 1px solid #fff;
+
+				margin-top: -1rem;
+			}
+
+			.front {
+				transform: translateZ(50px) rotateY(0deg);
+			}
+			.back {
+				transform: translateZ(-50px) rotateY(180deg);
+			}
+			.left {
+				transform: rotateY(-90deg) translateX(-50px);
+				transform-origin: center left;
+			}
+			.right {
+				transform: rotateY(90deg) translateX(50px);
+				transform-origin: top right;
+			}
+			.top {
+				transform: rotateX(-90deg) translateY(-50px);
+				transform-origin: top center;
+			}
+			.bottom {
+				transform: rotateX(90deg) translateY(50px);
+				transform-origin: bottom center;
+			}
+		}
+
+		@keyframes spin {
+			from { transform: rotateY(0); }
+			to { transform: rotateY(360deg); }
+		}
+		@-webkit-keyframes spin {
+			from { -webkit-transform: rotateY(0deg); }
+			to { -webkit-transform: rotateY(360deg); }
+		}
+
+		@keyframes spin-vertical {
+			from { transform: rotateX(0); }
+			to { transform: rotateX(-360deg); }
+		}
+		@-webkit-keyframes spin-vertical {
+			from { -webkit-transform: rotateX(0); }
+			to { -webkit-transform: rotateX(-360deg); }
+		}
+	}
+}
+		

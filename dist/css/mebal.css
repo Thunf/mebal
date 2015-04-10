@@ -179,6 +179,62 @@
     background-color: #0bb;
   }
 }
+.demo-loading-hamb1 {
+  width: 2.5rem;
+  height: .6rem;
+  background-color: #355;
+  animation: loadingHumb 1.2s ease-in-out 0.2s infinite;
+  -webkit-animation: loadingHumb 1.2s ease-in-out 0.2s infinite;
+  margin: 3rem 5rem 5rem;
+}
+.demo-loading-hamb1:before,
+.demo-loading-hamb1:after {
+  content: '';
+  position: absolute;
+  width: 2.5rem;
+  height: .6rem;
+  background-color: #355;
+  animation: loadingHumb 1.2s ease-in-out infinite;
+  -webkit-animation: loadingHumb 1.2s ease-in-out infinite;
+}
+.demo-loading-hamb1:before {
+  margin-top: 1rem;
+  animation-delay: .4s;
+  -webkit-animation-delay: .4s;
+}
+.demo-loading-hamb1:after {
+  margin-top: 2rem;
+  animation-delay: .6s;
+  -webkit-animation-delay: .6s;
+}
+@keyframes loadingHumb {
+  0%,
+  40%,
+  100% {
+    transform: scale(1, 1);
+    box-shadow: 0 .1rem .3rem #999;
+    background-color: #355;
+  }
+  20% {
+    transform: scale(1.2, 1);
+    box-shadow: 0 .3rem .3rem #999;
+    background-color: #0bb;
+  }
+}
+@-webkit-keyframes loadingHumb {
+  0%,
+  40%,
+  100% {
+    -webkit-transform: scale(1, 1);
+    box-shadow: 0 .1rem .3rem #999;
+    background-color: #355;
+  }
+  20% {
+    -webkit-transform: scale(1.2, 1);
+    box-shadow: 0 .3rem .3rem #999;
+    background-color: #0bb;
+  }
+}
 
 .switch-checkbox {
   position: relative;

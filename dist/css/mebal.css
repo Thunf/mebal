@@ -125,6 +125,58 @@
   }
 }
 
+.demo-font-fold {
+  font-size: 5rem;
+  font-weight: bold;
+  font-family: Helvetica;
+  color: #0BB;
+}
+.demo-font-fold span {
+  position: relative;
+  display: inline-block;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  perspective: 500;
+  -webkit-perspective: 500;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+}
+.demo-font-fold span:before,
+.demo-font-fold span:after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+  -webkit-transform-origin: left;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+}
+.demo-font-fold span:before {
+  transform: scale(1.15, 1) skew(0, 10deg);
+  -webkit-transform: scale(1.15, 1) skew(0, 10deg);
+  color: rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+.demo-font-fold span:after {
+  text-shadow: -1px 0 1px #aaaaaa, 1px 0 1px #777777;
+  transform: rotateY(-45deg);
+  -webkit-transform: rotateY(-45deg);
+  color: #FFF;
+  z-index: 2;
+}
+.demo-font-fold span:hover:before {
+  transform: scale(1) skew(0);
+  -webkit-transform: scale(1) skew(0);
+}
+.demo-font-fold span:hover:after {
+  transform: rotateY(0);
+  -webkit-transform: rotateY(0);
+}
+.demo-font-fold span + span {
+  margin-left: 0.3rem;
+}
+
 .demo-loading-hamb {
   width: 2.5rem;
   height: .6rem;

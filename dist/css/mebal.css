@@ -128,7 +128,6 @@
 }
 
 .demo-font-fold {
-  font-size: 5rem;
   font-weight: bold;
   font-family: Helvetica;
   color: #0BB;
@@ -174,9 +173,6 @@
 .demo-font-fold span:hover:after {
   transform: rotateY(0);
   -webkit-transform: rotateY(0);
-}
-.demo-font-fold span + span {
-  margin-left: 0.3rem;
 }
 
 .demo-loading-hamb {

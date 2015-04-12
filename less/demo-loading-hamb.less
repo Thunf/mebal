@@ -1,15 +1,14 @@
 .demo-loading-hamb{
 
-	width: 2.5rem;
-	height: .6rem;
-
-	margin: 3rem 5rem 5rem;
+	width: 2.5em;
+	height: .6em;
+	display: inline-block;
 
 	.hamb{
 		width: 100%;
 		height: 100%;
 		display: block;
-		margin-bottom: 0.4rem;
+		margin-bottom: 0.4em;
 		background-color: #355;
 		animation: loadingHumb 1.2s ease-in-out infinite;
 		-webkit-animation: loadingHumb 1.2s ease-in-out infinite;
@@ -33,12 +32,12 @@
 	@keyframes loadingHumb{
 		0%, 40%, 100%{
 			transform: scale(1,1);
-			box-shadow: 0 .1rem .3rem #999;
+			box-shadow: 0 .1em .3em #999;
 			background-color: #355;
 		}
 		20%{
 			transform: scale(1.2,1);
-			box-shadow: 0 .3rem .3rem #999;
+			box-shadow: 0 .3em .3em #999;
 			background-color: #0bb;
 		}
 	}
@@ -46,12 +45,12 @@
 	@-webkit-keyframes loadingHumb{
 		0%, 40%, 100%{
 			-webkit-transform: scale(1,1);
-			box-shadow: 0 .1rem .3rem #999;
+			box-shadow: 0 .1em .3em #999;
 			background-color: #355;
 		}
 		20%{
 			-webkit-transform: scale(1.2,1);
-			box-shadow: 0 .3rem .3rem #999;
+			box-shadow: 0 .3em .3em #999;
 			background-color: #0bb;
 		}
 	}
@@ -60,59 +59,33 @@
 
 .demo-loading-hamb1{
 
-	width: 2.5rem;
-	height: .6rem;
+	width: 2.5em;
+	height: .6em;
+	display: inline-block;
+
 	background-color: #355;
 	animation: loadingHumb 1.2s ease-in-out .2s infinite;
 	-webkit-animation: loadingHumb 1.2s ease-in-out .2s infinite;
 
-	margin: 3rem 5rem 5rem;
-
 	&:before, &:after{
 		content: '';
 		position: absolute;
-		width: 2.5rem;
-		height: .6rem;
+		width: 2.5em;
+		height: .6em;
 		background-color: #355;
 		animation: loadingHumb 1.2s ease-in-out infinite;
 		-webkit-animation: loadingHumb 1.2s ease-in-out infinite;
 	}
 
 	&:before{
-		margin-top: 1rem;
+		margin-top: 1em;
 		animation-delay: .4s;
 		-webkit-animation-delay: .4s;
 	}
 
 	&:after{
-		margin-top: 2rem;
+		margin-top: 2em;
 		animation-delay: .6s;
 		-webkit-animation-delay: .6s;
-	}
-
-	@keyframes loadingHumb{
-		0%, 40%, 100%{
-			transform: scale(1,1);
-			box-shadow: 0 .1rem .3rem #999;
-			background-color: #355;
-		}
-		20%{
-			transform: scale(1.2,1);
-			box-shadow: 0 .3rem .3rem #999;
-			background-color: #0bb;
-		}
-	}
-
-	@-webkit-keyframes loadingHumb{
-		0%, 40%, 100%{
-			-webkit-transform: scale(1,1);
-			box-shadow: 0 .1rem .3rem #999;
-			background-color: #355;
-		}
-		20%{
-			-webkit-transform: scale(1.2,1);
-			box-shadow: 0 .3rem .3rem #999;
-			background-color: #0bb;
-		}
 	}
 }

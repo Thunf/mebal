@@ -1,6 +1,28 @@
 /*
  * main style in mebal index.html
  */
+
+body{
+	font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+}
 .navbar{
 	margin-bottom: 0;
+}
+
+.demo-section{
+	margin-bottom: 40px;
+
+	.demo-caption{
+		margin-bottom: 20px;
+	}
+
+	.demo-code{
+
+		&:before{
+			content: attr(data-code);
+			position: relative;
+			padding: 2px 4px;
+			font-size: 90%;
+		}
+	}
 }

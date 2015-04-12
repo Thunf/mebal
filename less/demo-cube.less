@@ -1,17 +1,17 @@
-.demo-cube{
-	margin-left: 200px;
+.demo-3d-cube{
+
 	&.wrap {
-		perspective: 800px;
-		perspective-origin: 50% 100px;
+		perspective: 80em;
+		perspective-origin: 50% 10em;
 
 		.cube {
 			position: relative;
-			width: 200px;
+			width: 20em;
 
-			height: 200px;
+			height: 20em;
 			background: purple;
 			opacity: .5;
-			line-height: 1rem;
+			line-height: 1em;
 
 			transform-style: preserve-3d;
 
@@ -22,87 +22,87 @@
 
 			div{
 				position: absolute;
-				width: 200px;
-				height: 200px;
+				width: 20em;
+				height: 20em;
 				background: red;
 				opacity: .5;
 				border: 1px solid #fff;
 
-				margin-top: -1rem;
+				margin-top: -1em;
 			}
 
 			.front {
-				transform: translateZ(100px);
+				transform: translateZ(10em);
 			}
 			.back {
-				transform: translateZ(-100px) rotateY(180deg);
+				transform: translateZ(-10em) rotateY(180deg);
 			}
 			.left {
-				transform: rotateY(-90deg) translateX(-100px);
+				transform: rotateY(-90deg) translateX(-10em);
 				transform-origin: center left;
 			}
 			.right {
-				transform: rotateY(90deg) translateX(100px);
+				transform: rotateY(90deg) translateX(10em);
 				transform-origin: top right;
 			}
 			.top {
-				transform: rotateX(-90deg) translateY(-100px);
+				transform: rotateX(-90deg) translateY(-10em);
 				transform-origin: top center;
 			}
 			.bottom {
-				transform: rotateX(90deg) translateY(100px);
+				transform: rotateX(90deg) translateY(10em);
 				transform-origin: bottom center;
 			}
 		}
 
 		.cube1 {
 			position: absolute;
-			margin: 50px;
+			margin: 5em;
 
-			width: 100px;
-			height: 100px;
+			width: 10em;
+			height: 10em;
 			background: black;
 			opacity: .5;
-			line-height: 1rem;
+			line-height: 1em;
 			color: white;
 
 			transform-style: preserve-3d;
 
-			transform-origin: 0 50px;
+			transform-origin: 0 5em;
 			animation: spin-vertical 5s infinite linear;
 			-webkit-animation: spin-vertical 5s infinite linear;
 
 			div{
 				position: absolute;
-				width: 100px;
-				height: 100px;
+				width: 10em;
+				height: 10em;
 				background: blue;
 				opacity: .5;
 				border: 1px solid #fff;
 
-				margin-top: -1rem;
+				margin-top: -1em;
 			}
 
 			.front {
-				transform: translateZ(50px) rotateY(0deg);
+				transform: translateZ(5em) rotateY(0deg);
 			}
 			.back {
-				transform: translateZ(-50px) rotateY(180deg);
+				transform: translateZ(-5em) rotateY(180deg);
 			}
 			.left {
-				transform: rotateY(-90deg) translateX(-50px);
+				transform: rotateY(-90deg) translateX(-5em);
 				transform-origin: center left;
 			}
 			.right {
-				transform: rotateY(90deg) translateX(50px);
+				transform: rotateY(90deg) translateX(5em);
 				transform-origin: top right;
 			}
 			.top {
-				transform: rotateX(-90deg) translateY(-50px);
+				transform: rotateX(-90deg) translateY(-5em);
 				transform-origin: top center;
 			}
 			.bottom {
-				transform: rotateX(90deg) translateY(50px);
+				transform: rotateX(90deg) translateY(5em);
 				transform-origin: bottom center;
 			}
 		}

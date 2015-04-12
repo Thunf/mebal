@@ -325,3 +325,8 @@ body {
   padding: 2px 4px;
   font-size: 90%;
 }
+.demo-footer {
+  margin-top: 20px;
+  padding: 30px 0;
+  border-top: 1px solid #ddd;
+}

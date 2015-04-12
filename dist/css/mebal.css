@@ -13,6 +13,8 @@
   opacity: .5;
   line-height: 1rem;
   transform-style: preserve-3d;
+}
+.demo-cube.wrap .cube:hover {
   animation: spin 5s infinite linear;
   -webkit-animation: spin 5s infinite linear;
 }

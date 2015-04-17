@@ -7,6 +7,7 @@ var cssminify = require("gulp-minify-css");
 var less = require("gulp-less");
 var autoprefixer = require("gulp-autoprefixer");
 var browserSync = require("browser-sync").create();
+var clean = require("gulp-clean");
 
 // path
 var oPath = {
@@ -16,7 +17,7 @@ var oPath = {
 };
 
 var uPath = {
-    tmp: './.tmp',
+    tmp: './.tmp/',
     js : './dist/js/',
     css: './dist/css/'
 };
@@ -67,8 +68,14 @@ gulp.task('cssmini',['less'],function(){
         .pipe(browserSync.reload({stream: true}));
 });
 
+// clean
+gulp.task("clean",function(){
+    return gulp.src(uPath.tmp + '**/*.*',{read: false})
+        .pipe(clean({force :true}));
+});
+
 // browser-sync
-gulp.task("browser-sync",function(){
+gulp.task("browser-sync",['clean'],function(){
     browserSync.init({
         server: "./"
     });

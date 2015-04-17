@@ -8,6 +8,7 @@ var less = require("gulp-less");
 var autoprefixer = require("gulp-autoprefixer");
 var browserSync = require("browser-sync").create();
 var clean = require("gulp-clean");
+var changed = require("gulp-changed");
 
 // path
 var oPath = {
@@ -46,6 +47,7 @@ gulp.task('jsmini',['jshint'],function(){
 // less
 gulp.task('less',function(){
     return gulp.src(oPath.less)
+        .pipe(changed(uPath.tmp,{extension: '.css'}))
         .pipe(less())
         .pipe(gulp.dest(uPath.tmp));
 });

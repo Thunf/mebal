@@ -7,11 +7,9 @@
         position: relative;
         display: inline-block;
         transform-style: preserve-3d;
-        -webkit-transform-style: preserve-3d;
         perspective: 500;
-        -webkit-perspective: 500;
-        font-smoothing: antialiased;
         -webkit-font-smoothing: antialiased;
+        font-smoothing: antialiased;
 
         &:before,&:after{
             content: attr(data-text);
@@ -19,14 +17,11 @@
             top: 0;
             left: 0;
             transform-origin: left;
-            -webkit-transform-origin: left;
             transition: all .5s ease-out;
-            -webkit-transition: all .5s ease-out;
         }
 
         &:before{
             transform: scale(1.15, 1) skew(0, 10deg);
-            -webkit-transform: scale(1.15, 1) skew(0, 10deg);
             color: rgba(0,0,0,.25);
             z-index: 1;
         }
@@ -34,7 +29,6 @@
         &:after{
             text-shadow: -1px 0 1px #AAA, 1px 0 1px #777;
             transform: rotateY(-45deg);
-            -webkit-transform: rotateY(-45deg);
             color: #FFF;
             z-index: 2;
         }
@@ -43,12 +37,10 @@
 
             &:before{
                 transform: scale(1) skew(0);
-                -webkit-transform: scale(1) skew(0);
             }
 
             &:after{
                 transform: rotateY(0);
-                -webkit-transform: rotateY(0);
             }
         }
     }

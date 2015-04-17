@@ -5,6 +5,7 @@ var uglify = require("gulp-uglify");
 var jshint = require("gulp-jshint");
 var cssminify = require("gulp-minify-css");
 var less = require("gulp-less");
+var autoprefixer = require("gulp-autoprefixer");
 
 
 //路径
@@ -44,6 +45,10 @@ gulp.task('jsmini',['jshint'],function(){
 gulp.task('cssmini',['less'],function(){
 	return gulp.src(oPath.tmp)
 		.pipe(concat('mebal.css'))
+		.pipe(autoprefixer({
+            browsers: ['> 1%'],
+            cascade: false
+        }))
 		.pipe(gulp.dest(uPath.css))
 		.pipe(cssminify())
 		.pipe(rename({

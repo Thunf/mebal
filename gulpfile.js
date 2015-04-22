@@ -9,6 +9,7 @@ var autoprefixer = require("gulp-autoprefixer");
 var browserSync = require("browser-sync").create();
 var clean = require("gulp-clean");
 var changed = require("gulp-changed");
+var inject = require("gulp-inject");
 
 // path
 var oPath = {
@@ -82,6 +83,13 @@ gulp.task("browser-sync",['clean'],function(){
         server: "./"
     });
     gulp.watch("./index.html").on("change", browserSync.reload);
+});
+
+// inject
+gulp.task("inject", function(){
+    var target = gulp.src("./index.html");
+    var source = gulp.src([uPath.js + "**/*.min.js", uPath.css + "**/*.min.css"], {read: false});
+    return target.pipe(inject(source)).pipe(gulp.dest('./'));
 });
 
 // watch

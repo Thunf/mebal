@@ -89,7 +89,7 @@ gulp.task("browser-sync",['clean'],function(){
 gulp.task("inject", function(){
     var target = gulp.src("./index.html");
     var source = gulp.src([uPath.js + "**/*.min.js", uPath.css + "**/*.min.css"], {read: false});
-    return target.pipe(inject(source)).pipe(gulp.dest('./'));
+    return target.pipe(inject(source, {relative: true})).pipe(gulp.dest('./'));
 });
 
 // watch

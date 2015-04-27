@@ -1,3 +1,59 @@
+.demo-button.make-sure {
+  position: relative;
+  width: 12em;
+  height: 3em;
+  margin: 0 auto;
+  font-weight: bold;
+  color: #fff;
+  background: #3b7;
+  overflow: hidden;
+  cursor: pointer;
+  /*border-radius: 5px;  some BUG happened */
+}
+.demo-button.make-sure .sure {
+  position: absolute;
+  top: 0;
+  margin-left: -7em;
+  line-height: 3em;
+  opacity: .5;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.demo-button.make-sure .sure:before {
+  content: '';
+  position: absolute;
+  top: -1.5em;
+  left: -1.5em;
+  width: 6em;
+  height: 5.5em;
+  border: 2px solid #fff;
+  background-color: #345;
+  -webkit-transform: rotate(20deg);
+  -ms-transform: rotate(20deg);
+  transform: rotate(20deg);
+}
+.demo-button.make-sure .sure:after {
+  content: attr(data-text);
+  position: relative;
+}
+.demo-button.make-sure .make {
+  display: block;
+  width: 100%;
+  text-align: center;
+  line-height: 3em;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.demo-button.make-sure:hover .sure {
+  margin-left: .5em;
+  opacity: .8;
+}
+.demo-button.make-sure:hover .make {
+  margin-left: 2.5em;
+}
+.demo-button.make-sure:active {
+  box-shadow: 2px 2px 1px #888;
+}
 
 .demo-3d-cube.wrap {
   -webkit-perspective: 80em;

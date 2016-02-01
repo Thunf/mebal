@@ -1,0 +1,82 @@
+.demo-circle{
+    
+    &.circle-halo{
+        position: relative;
+        width: 10em;
+        height: 10em;
+
+        &> .circle-halo{
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 60%;
+            height: 60%;
+            margin: auto;
+
+            &:before{
+                animation-delay: 2s;
+            }
+            &:after{
+                width: 60%;
+                height: 60%;
+                animation-delay: 3s;
+            }
+        }
+
+        &:before,
+        &:after{
+            content: '';
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            border-radius: 50%;
+            border: 1px solid #2297d0;
+            box-shadow: 0 0 14px #2297d0,inset 0 0 12px #2297d0;
+            background: rgba(255,255,255,.05);
+            animation: pulse-scale 5s ease-in-out 0s infinite, pulse-opacity 3.5s ease-in-out 0s infinite;
+        }
+
+        &:after{
+            width: 80%;
+            height: 80%;
+            animation-delay: 1s;
+        }
+
+    }
+
+    @keyframes pulse-scale {
+        0%,100% {
+            transform: scale(0.8,0.8);
+        }
+        50% {
+            transform: scale(1,1);
+        }
+    }
+
+    @keyframes pulse-opacity {
+        0%,100% {
+            opacity: 1;
+            -ms-filter: none;
+            filter: none;
+        }
+
+        50% {
+            opacity: .15;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=15)";
+            filter: alpha(opacity=15);
+        }
+    }
+
+
+
+
+}

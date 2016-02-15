@@ -14,9 +14,11 @@
 			line-height: 1em;
 
 			transform-style: preserve-3d;
+			animation: spin 5s infinite linear;
+			animation-play-state: paused;
 
 			&:hover{
-				animation: spin 5s infinite linear;
+				animation-play-state: running;
 			}
 
 			div{

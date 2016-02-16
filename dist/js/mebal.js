@@ -1,3 +1,1 @@
-/*
- * try for new function here
- */
+/* something */

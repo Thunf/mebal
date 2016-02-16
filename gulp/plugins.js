@@ -4,6 +4,7 @@ module.exports = function() {
     var plugins = require("gulp-load-plugins")();
 
     // 加载插件
+    plugins.fs              = require('fs');
     plugins.concat          = require("gulp-concat");
     plugins.rename          = require("gulp-rename");
     plugins.clean           = require("gulp-clean");
@@ -19,6 +20,8 @@ module.exports = function() {
     plugins.Remarkable      = require('remarkable');
     plugins.gutil           = require('gulp-util');
     plugins.chalk           = require('chalk');
+    plugins.minimist        = require('minimist');
+    // plugins.source          = require('vinyl-source-stream');  
 
     // 引入通用方法集
     plugins.utils            = require("./utils")();

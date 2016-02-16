@@ -1,29 +1,3 @@
-/*
- * main style in mebal index.html
- */
-body {
-  font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
-}
-.navbar {
-  margin-bottom: 0;
-}
-.demo-section {
-  margin-bottom: 40px;
-}
-.demo-section .demo-caption {
-  margin-bottom: 20px;
-}
-.demo-section .demo-code:before {
-  content: attr(data-code);
-  position: relative;
-  font-size: 90%;
-}
-.demo-footer {
-  margin-top: 20px;
-  padding: 30px 0;
-  border-top: 1px solid #ddd;
-}
-
 .demo-button.make-sure {
   position: relative;
   width: 12em;
@@ -79,6 +53,32 @@ body {
 }
 .demo-button.make-sure:active {
   box-shadow: 2px 2px 1px #888;
+}
+
+/*
+ * main style in mebal index.html
+ */
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+}
+.navbar {
+  margin-bottom: 0;
+}
+.demo-section {
+  margin-bottom: 40px;
+}
+.demo-section .demo-caption {
+  margin-bottom: 20px;
+}
+.demo-section .demo-code:before {
+  content: attr(data-code);
+  position: relative;
+  font-size: 90%;
+}
+.demo-footer {
+  margin-top: 20px;
+  padding: 30px 0;
+  border-top: 1px solid #ddd;
 }
 
 .demo-loading-hamb {
@@ -540,10 +540,6 @@ body {
   color: #b9b9b9;
 }
 
-/*
- * try for new style here
- */
-
 .switch-checkbox {
   position: relative;
   width: 5em;
@@ -588,3 +584,5 @@ body {
   cursor: pointer;
   z-index: 1;
 }
+
+/* something */

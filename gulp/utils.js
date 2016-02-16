@@ -62,5 +62,27 @@ module.exports = function() {
         return files;
     };
 
+    // 返回模板文件
+    utils.getTemplates = function(name){
+        return {
+            md: {
+                contents: "### I'm "+name+".md\n Write some description here.\n <!-- inject:code:html --><!-- endinject -->\n",
+                name: 'doc'
+            },
+            html: {
+                contents: '<div>Write DEMO here.</div>',
+                name: 'demo'
+            },
+            js: {
+                contents: '/* something */'
+                // name: 'script'
+            },
+            less: {
+                contents: '/* something */'
+                // name: 'style'
+            }
+        }
+    };
+
     return utils;
 };

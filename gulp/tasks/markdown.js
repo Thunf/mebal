@@ -5,7 +5,7 @@ module.exports = function (gulp, $, config) {
     // 编译md并注入demo
     gulp.task('md_inject', ['clean_html'], function() {
         var stream, path, 
-            folders = require('fs').readdirSync('src/');
+            folders = $.fs.readdirSync('src/');
 
         folders.forEach(function(folder) {
             if (-1 == ['.DS_Store', 'base'].indexOf(folder)) {
@@ -48,7 +48,7 @@ module.exports = function (gulp, $, config) {
     // 生成内容html
     gulp.task('md2html', ['md_inject'], function() {
 
-        var folders = require('fs').readdirSync('src/'),
+        var folders = $.fs.readdirSync('src/'),
             srcSort = $.utils.getSrcSort(folders, ['.DS_Store', 'base'], [], ['new']);
 
         var stream = gulp.src(srcSort)

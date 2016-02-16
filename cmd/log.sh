@@ -4,15 +4,15 @@ rf=$(pwd)'/../'
 
 # 配置颜色预设数据，默认使用亮色系
 log_list=(
-    "方法        颜色名       缩写    色值       中文颜色"
-    "logGray    gray        -gy     90        灰色"
-    "logRed     red         -rd     91        红色"
-    "logGreen   green       -gn     92        绿色"
-    "logYellow  yellow      -ye     93        黄色"
-    "logBlue    blue        -bu     94        蓝色"
-    "logViolet  violet      -vt     95        紫红"
-    "logCyan    cyan        -cy     96        青色"
-    "logWhite   white       -wt     97        白色"
+    "暂时无用    颜色名       缩写    色值       中文颜色"
+    "---         gray       -gy     90        灰色"
+    "---          red       -rd     91        红色"
+    "---        green       -gn     92        绿色"
+    "---       yellow       -ye     93        黄色"
+    "---         blue       -bu     94        蓝色"
+    "---       violet       -vt     95        紫红"
+    "---         cyan       -cy     96        青色"
+    "---        white       -wt     97        白色"
 )
 
 # 额外参数配置
@@ -23,9 +23,31 @@ checkArg=(
     "time           t           1"
 )
 
-#查看帮助
-logHelp() {
-    log "32" "快捷方式如下，使用方法：sh log.sh -rd \"I'm in darkred with background\" -bd"
+# 使用帮助
+help(){
+    echo "
+    使用方法：
+        【1】：sh log.sh [颜色] [内容] [其他配置]
+
+            颜色：
+                请查看所有快捷方式：sh log.sh -list
+            内容：
+                如果有空格，请置于引号("")内
+            其他配置（多个需连写）：
+                时间戳：-t
+                背景色：-b
+                深色系：-d
+
+        【2】：示例：
+            sh log.sh -rd \"dark red text with time\" -dt
+            sh log.sh -bu \"blue background with time\" -bt
+        \n"
+    exit 1
+}
+
+# 查看列表
+list() {
+    log "92" "颜色配置如下，使用方法：sh log.sh -help "
 
     for (( i=0;i<${#log_list[*]};i++ ));do
         A=`echo ${log_list[$i]} | awk '{print $1}'`
@@ -35,29 +57,33 @@ logHelp() {
         E=`echo ${log_list[$i]} | awk '{print $5}'`
 
         if [[ "$i" == 0 ]]; then
-            C=`log 37 $C '1'`
-            B=`log 37 $B '1'`
-            A=`log 37 $E '1'`
+            C=`log 37 $C`
+            B=`log 37 $B`
+            A=`log 37 $E`
+            E=`log 37 "背景色：-b"`
+            D1=`log 37 "深色：-d"`
 
             # 格式化输出
-            echo "+====================================================+"
-            printf "%-1s %-35s %-1s %-25s %-1s %-20s %-1s\n" \
-                   \| ${A:-''} \| ${B:-''} \| ${C:-''} \| 
-            echo "+====================================================+"
+            echo "+========================================================+"
+            printf "%-1s %-22s %-1s %-18s %-1s %-17s %-1s %-23s %-1s %-22s %-1s\n" \
+                   \| ${A:-''} \| ${B:-''} \| ${C:-''} \|  ${D1:-''} \| ${E:-''} \| 
+            echo "+========================================================+"
         else
 
-            if [[ $B == "black" ]]; then
-                D="37"
-            fi
+            # if [[ $B == "black" ]]; then
+            #     D="37"
+            # fi
 
-            C=`log $D $C '1'`
-            B=`log $D $B '1'`
-            A=`log $D $E '1'`
+            A=`log $D $E`
+            C=`log $D $C`
+            E=`log $(($D+10)) $B`
+            D1=`log $(($D-60)) $B`
+            B=`log $D $B`
 
             # 格式化输出
-            printf "%-1s %-33s %-1s %-22s %-1s %-18s %-1s\n" \
-                   \| ${A:-''} \| ${B:-''} \| ${C:-''} \| 
-            echo "+----------------------------------------------------+"
+            printf "%-1s %-20s %-1s %-15s %-1s %-15s %-1s %-20s %-1s %-20s %-1s\n" \
+                   \| ${A:-''} \| ${B:-''} \| ${C:-''} \|  ${D1:-''} \| ${E:-''} \| 
+            echo "+--------------------------------------------------------+"
         fi
     done
 
@@ -65,8 +91,8 @@ logHelp() {
 
 # 打印
 log() {
-    printStr=$2;
     printColor=$(($1+$dark+$background));
+    printStr=$2;
 
     # 设置时间戳
     timeStamp="";
@@ -135,11 +161,12 @@ for (( i=1; i < $#+1; i++ )); do
 done
 
 # ======= 命令判断 =======
-if [[ $# -eq 0 || "$1" == "help" ||  "$1" == "-h" ]];then
+if [[ $# -eq 0 || "$1" == "-help" ||  "$1" == "-h" ]];then
     with_time="0"
-    logHelp;    
+    help;    
+elif [[ "$1" == "-list" ||  "$1" == "-l" ]]; then
+    list;
 else
-
     # 遍历取色
     for key in ${!log_list[*]} ; do
         A=`echo ${log_list[$key]} | awk '{print $1}'`    # 方法
@@ -161,7 +188,7 @@ else
         log $color
     else
         with_time="0"
-        logHelp
+        help
     fi
 
 fi

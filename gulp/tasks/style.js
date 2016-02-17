@@ -11,7 +11,7 @@ module.exports = function (gulp, $, config) {
     // css concat/minify
     gulp.task('cssmini', ['less'], function(){
         return gulp.src(config.tmp.css)
-            .pipe($.concat('mebal.css'))
+            .pipe($.concat(config.name + '.css'))
             .pipe($.autoprefixer({
                 browsers: ['> 1%'],
                 cascade: false

@@ -2,6 +2,9 @@ module.exports = function() {
 
     return {
 
+        // 项目名称
+        name: 'mebal',
+
         // tmp
         tmp: {
             index: '.tmp/',
@@ -10,22 +13,22 @@ module.exports = function() {
             html: '.tmp/**/*.html'
         },
 
-        // target path
+        // 目标文件
         tPath: {
             index: 'dist/',
             js : 'dist/js/',
             css: 'dist/css/'
         },
 
-        // src path
+        // 源文件
         sPath: {
             index: 'src/',
             js: 'src/**/*.js',
-            md: 'src/**/*.md',
-            code: 'src/**/*.html',
             less: 'src/**/*.less',
+            md: 'src/**/*.md',
+            html: 'src/**/*.html',
 
-            html: {
+            base: {
                 nav: 'src/base/nav.html',
                 footer: 'src/base/footer.html',
                 index: 'src/base/index.html'

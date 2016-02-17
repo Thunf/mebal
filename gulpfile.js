@@ -15,13 +15,13 @@ gulp.task('watch', ['html_index'],function(){
 
     gulp.watch(config.sPath.js, ['jsmini']);
     gulp.watch(config.sPath.less, ['cssmini']);
-    gulp.watch([config.sPath.md, config.sPath.code], ['html_contents']);
+    gulp.watch([config.sPath.md, config.sPath.html], ['html_contents']);
 });
 
 // default
 gulp.task('dev', ['watch'],function(){
 
-    $.gutil.log( $.chalk.green('gulp start...') );
+    $.gutil.log( $.chalk.green('gulp running...') );
 
     // browser-sync
     $.browserSync.init({server: "./"});

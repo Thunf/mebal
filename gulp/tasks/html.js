@@ -2,10 +2,10 @@ module.exports = function (gulp, $, config) {
 
     // 由src/base/下的nav和index生成根目录下的index.html
     gulp.task('html_base', function(){
-        var stream = gulp.src(config.sPath.html.index);
-        for(var k in config.sPath.html){
-            if (config.sPath.html.hasOwnProperty(k) && 'index' !== k) {
-                stream.pipe($.inject(gulp.src([config.sPath.html[k]]), {
+        var stream = gulp.src(config.sPath.base.index);
+        for(var k in config.sPath.base){
+            if (config.sPath.base.hasOwnProperty(k) && 'index' !== k) {
+                stream.pipe($.inject(gulp.src([config.sPath.base[k]]), {
                     removeTags: true,
                     starttag: '<!-- inject:' + k + ':{{ext}} -->',
                     transform: function(filePath, file) {

@@ -20,7 +20,7 @@ module.exports = function(gulp, $, config) {
                     // var body = document.getElementsByTagName('body')[0];
                     // var elem = document.createElement('script');
                     // body.appendChild(elem);
-                    // elem.innerHTML = "alert('nima')";
+                    // elem.innerHTML = "alert('test')";
                 }, {
                     folder: folder
                 })

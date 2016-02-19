@@ -9,14 +9,14 @@
 ### DONE
 
 - 仅需增加对应的源文件（LESS/HTML/MD）
-- DOC+DEMO自动生成
-- 自动生成DEMO模板
+- DOC+DEMO自动生成【inject】
+- 自动生成DEMO模板【inject】
+- 更改后自动跳转到对应DEMO【BS-锚点】
+- 点击示例代码可以复制到粘贴板【zero-clipboard】
 
 ### TODO
 
-- 更改后自动跳转到对应DEMO【BS-锚点】
-- 编译错误时，错误栈信息更新到页面上【BS-msg】
-- 点击示例代码可以复制到粘贴板【zero-clipboard】
+- 捕获编译错误，并将错误栈信息显示到页面上【BS-msg】
 - 排序干涉功能（现为自动按文件夹排序）【config】
 - 多DEMO组合自由注入（现为单DEMO一次注入DOC）【doc - demo1,demo2,...】
 - 可能考虑：多DEMO时按文件夹结构分页【待定】

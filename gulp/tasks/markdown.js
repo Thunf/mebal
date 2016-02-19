@@ -12,8 +12,14 @@ module.exports = function (gulp, $, config) {
                 path = config.sPath.index + folder;
                 stream = gulp.src(path + '/*.md')
                     .pipe($.tap(function(file, t){
+                        var template = [
+                            '<section class="demo-section">',
+                                '<a class="target-random" name="' + folder + '"></a>\n',
+                                md.render(file.contents.toString('utf8')),
+                            '</section>'
+                        ].join('\n');
                         file.contents = Buffer.concat([
-                            new Buffer(md.render(file.contents.toString('utf8')))
+                            new Buffer(template)
                         ]);
                     }))
                     .pipe($.inject(gulp.src(path + '/*.html'), {

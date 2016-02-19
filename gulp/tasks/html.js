@@ -28,12 +28,7 @@ module.exports = function (gulp, $, config) {
                         return '<!-- inject:contents:{{ext}} -->';
                     },
                     transform: function(filePath, file) {
-                        var template = [
-                            '<section class="demo-section">',
-                                file.contents.toString('utf8'),
-                            '</section>'
-                        ];
-                        return template.join('\n');
+                        return file.contents.toString('utf8');
                     }
                 }))
                 .pipe(gulp.dest('./'))

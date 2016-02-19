@@ -4,16 +4,16 @@ module.exports = function() {
     var plugins = require("gulp-load-plugins")();
 
     // 加载插件
+    plugins.browserSync     = require("browser-sync").create();
     plugins.fs              = require('fs');
     plugins.concat          = require("gulp-concat");
     plugins.rename          = require("gulp-rename");
     plugins.clean           = require("gulp-clean");
     plugins.uglify          = require("gulp-uglify");
     plugins.jshint          = require("gulp-jshint");
-    plugins.cssminify       = require("gulp-minify-css");
     plugins.less            = require("gulp-less");
+    plugins.cssminify       = require("gulp-minify-css");
     plugins.autoprefixer    = require("gulp-autoprefixer");
-    plugins.browserSync     = require("browser-sync").create();
     plugins.changed         = require("gulp-changed");
     plugins.inject          = require("gulp-inject");
     plugins.tap             = require("gulp-tap");

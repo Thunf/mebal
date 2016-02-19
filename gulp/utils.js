@@ -1,7 +1,7 @@
 module.exports = function() {
 
     // 添加通用方法
-    var config  = require('./config')(),
+    var config = require('./config')(),
         utils = {};
 
     // HTML转义
@@ -31,7 +31,7 @@ module.exports = function() {
                 };
             };
         };
-        
+
         // 优先前排文件        
         if (!!firstOrder && firstOrder.length) {
             for (var i = firstOrder.length - 1; i >= 0; i--) {
@@ -42,7 +42,7 @@ module.exports = function() {
                 };
             };
         };
-        
+
         // 优先后排文件
         if (!!lastOrder && lastOrder.length) {
             for (var i = 0; i < lastOrder.length; i++) {
@@ -63,10 +63,10 @@ module.exports = function() {
     };
 
     // 返回模板文件
-    utils.getTemplates = function(name){
+    utils.getTemplates = function(name) {
         return {
             md: {
-                contents: "### I'm "+name+".md\n Write some description here.\n <!-- inject:code:html --><!-- endinject -->\n",
+                contents: "### I'm " + name + ".md\n Write some description here.\n <!-- inject:code:html --><!-- endinject -->\n",
                 name: 'doc'
             },
             html: {
@@ -75,14 +75,30 @@ module.exports = function() {
             },
             js: {
                 contents: '/* something */'
-                // name: 'script'
+                    // name: 'script'
             },
             less: {
                 contents: '/* something */'
-                // name: 'style'
+                    // name: 'style'
             }
         }
     };
+
+    // 转换fn
+    utils.script = function(fn, vals) {
+        if ('function' != typeof fn) {
+            return '';
+        };
+        var data = {};
+        if ('object' == typeof vals) {
+            for (var k in vals) {
+                if ('undefined' != typeof vals[k]) {
+                    data[k] = vals[k];
+                };
+            }
+        };
+        return '(' + fn.toString() + ')(' + JSON.stringify(data) + ');';
+    }
 
     return utils;
 };

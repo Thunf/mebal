@@ -1,5 +1,6 @@
 module.exports = function (gulp, $, config) {
 
+    // 获取命令行参数
     var options = $.minimist(process.argv.slice(2), {
         default: {
             // env: 'production',

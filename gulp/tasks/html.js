@@ -1,7 +1,7 @@
 module.exports = function (gulp, $, config) {
 
     // 由src/base/下的nav和index生成根目录下的index.html
-    gulp.task('html_base', function(){
+    gulp.task('html:base', function(){
         var stream = gulp.src(config.sPath.base.index);
         for(var k in config.sPath.base){
             if (config.sPath.base.hasOwnProperty(k) && 'index' !== k) {
@@ -19,7 +19,7 @@ module.exports = function (gulp, $, config) {
     });
 
     // 注入主内容文件
-    gulp.task('html_contents', ['md2html', 'html_base'], function(){
+    gulp.task('html:contents', ['md:contents', 'html:base'], function(){
         var contents = gulp.src([config.tmp.index+'base/contents.html']),
             stream = gulp.src('index.html')
                 .pipe($.inject(contents, {
@@ -42,7 +42,7 @@ module.exports = function (gulp, $, config) {
     });
 
     // 注入基础文件
-    gulp.task('html_index', ['html_contents', 'cssmini', 'jsmini'], function(){
+    gulp.task('html:inject', ['html:contents', 'css:mini', 'js:mini'], function(){
         var base = gulp.src([
                 config.tPath.js + '**/*.min.js', 
                 config.tPath.css + '**/*.min.css'

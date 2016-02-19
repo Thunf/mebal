@@ -3,7 +3,7 @@ module.exports = function (gulp, $, config) {
     var md = new $.Remarkable({html: true});
 
     // 编译md并注入demo
-    gulp.task('md_inject', ['clean_html'], function() {
+    gulp.task('md:inject', ['clean:html'], function() {
         var stream, path, 
             folders = $.fs.readdirSync('src/');
 
@@ -46,7 +46,7 @@ module.exports = function (gulp, $, config) {
     });
 
     // 生成内容html
-    gulp.task('md2html', ['md_inject'], function() {
+    gulp.task('md:contents', ['md:inject'], function() {
 
         var folders = $.fs.readdirSync('src/'),
             srcSort = $.utils.getSrcSort(folders, ['.DS_Store', 'base'], [], ['new']);

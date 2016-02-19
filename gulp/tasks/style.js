@@ -1,7 +1,7 @@
 module.exports = function (gulp, $, config) {
 
     // less
-    gulp.task('less', ['clean_css'], function(){
+    gulp.task('less', ['clean:css'], function(){
         return gulp.src(config.sPath.less)
             .pipe($.changed(config.tmp.index, {extension: '.css'}))
             .pipe($.less())
@@ -9,7 +9,7 @@ module.exports = function (gulp, $, config) {
     });
 
     // css concat/minify
-    gulp.task('cssmini', ['less'], function(){
+    gulp.task('css:mini', ['less'], function(){
         return gulp.src(config.tmp.css)
             .pipe($.concat(config.name + '.css'))
             .pipe($.autoprefixer({

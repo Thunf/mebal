@@ -98,7 +98,43 @@ module.exports = function() {
             }
         };
         return '(' + fn.toString() + ')(' + JSON.stringify(data) + ');';
-    }
+    };
+
+    utils.formatJson = function(data, indent){
+        var str = [], indent = indent || 0, indentStr = '';
+        if ('object' == typeof data) {
+            for (var k in data) {
+                var sline = '';
+                if (data.hasOwnProperty(k)) {
+                    if (!data.hasOwnProperty('length')) {
+                        sline = JSON.stringify(k) + ": " ;
+                    }
+                    if ('object' != typeof data[k]) {
+                        sline += JSON.stringify(data[k]);
+                    }else{
+                        sline += arguments.callee(data[k], indent+4);
+                    }
+                };
+                if (sline && sline.length > 0 ) {
+                    str.push(sline);
+                }
+            }
+        } else {
+            str = JSON.stringify(data);
+        }
+        for (var i = indent; i--;) {indentStr += ' '; };
+        indentStr  = ',\n' + indentStr;
+        if (data.length) {
+            return '[' + str.join(indentStr) + ']';
+        } else {
+            if (!!indent) {
+                return '{' + str.join(indentStr) + '}';
+            }
+            return str.join(indentStr);
+        }
+    };
+
+
 
     return utils;
 };

@@ -21,6 +21,7 @@ module.exports = function() {
     plugins.gutil           = require('gulp-util');
     plugins.chalk           = require('chalk');
     plugins.minimist        = require('minimist');
+    plugins.plumber         = require('gulp-plumber');
     // plugins.source          = require('vinyl-source-stream');  
 
     // 引入通用方法集

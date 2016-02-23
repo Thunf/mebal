@@ -4,4 +4,4 @@
 ## 实例：加载图标-汉堡型（Loading hamb）
 左右图标实现方式不同（后一个样式略有BUG，待修正，暂时没想到完美的办法...欢迎指正）
 
-<!-- inject:code:html --><!-- endinject -->
+<!-- inject:demo.html -->

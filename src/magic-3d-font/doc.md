@@ -4,4 +4,4 @@
 ## 实例：字体翻折（Font fold）
 鼠标悬浮时字体翻折起来
 
-<!-- inject:code:html --><!-- endinject -->
+<!-- inject:demo.html -->

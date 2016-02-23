@@ -4,4 +4,4 @@
 ## 实例：立方体（Cube）
 鼠标悬停时大立方体旋转（此demo仅作参考，具体实现请参考代码）
 
-<!-- inject:code:html --><!-- endinject -->
+<!-- inject:demo.html -->

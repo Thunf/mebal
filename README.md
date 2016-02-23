@@ -14,10 +14,10 @@
 - 更改后自动跳转到对应DEMO【BS-锚点】
 - 点击示例代码可以复制到粘贴板【zero-clipboard】
 - 捕获编译错误，并将错误栈信息显示到页面上【BS-msg】
+- 多DEMO组合自由注入（现为单DEMO一次注入DOC）【doc - demo1,demo2,...】
 
 ### TODO
 
-- 多DEMO组合自由注入（现为单DEMO一次注入DOC）【doc - demo1,demo2,...】
 - 排序干涉（现为自动按文件夹排序）【config】
 - 编译错误后，若再次保存时编译通过，则去除浏览器端显示错误信息【现为延迟8s消失】
 - 可能考虑：多DEMO时按文件夹结构分页【待定】
@@ -100,7 +100,7 @@ src/
 
 # License
 
-[MIT](https://github.com/jonschlinkert/remarkable/blob/master/LICENSE)
+[MIT](https://github.com/Thunf/mebal/blob/develop/LICENSE)
 
 
 

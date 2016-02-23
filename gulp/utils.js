@@ -66,12 +66,12 @@ module.exports = function() {
     utils.getTemplates = function(name) {
         return {
             md: {
-                contents: "### I'm " + name + ".md\n Write some description here.\n <!-- inject:code:html --><!-- endinject -->\n",
+                contents: "### I'm " + name + ".md\nWrite some description here. \n<!-- inject:new_demo.html --> \n",
                 name: 'doc'
             },
             html: {
                 contents: '<div>Write DEMO here.</div>',
-                name: 'demo'
+                name: 'new_demo'
             },
             js: {
                 contents: '/* something */'

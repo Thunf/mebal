@@ -5,7 +5,15 @@ module.exports = function() {
         // 项目名称
         name: 'mebal',
 
-        // tmp
+        // 文件排序
+        sort: {
+            config: 'gulp/config/config_sort',
+            ignore: ['.DS_Store', 'base'],
+            before: ['test'],
+            after: ['new']
+        },
+
+        // 临时文件目录
         tmp: {
             index: '.tmp/',
             js: '.tmp/**/*.js',

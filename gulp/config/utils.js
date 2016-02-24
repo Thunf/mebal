@@ -20,7 +20,6 @@ module.exports = function() {
     // 获取有序的源文件地址列表
     // 文件名列表，忽略文件，优先前排顺序，优先后排顺序
     utils.getSrcSort = function(files, ignore, firstOrder, lastOrder) {
-        var path = config.tmp.index;
 
         // 去除忽略文件
         if (!!ignore && ignore.length) {
@@ -54,13 +53,17 @@ module.exports = function() {
             };
         };
 
-        // 添加地址
+        return files;
+    };
+
+    // 补全地址
+    utils.fillTmpPath = function(files){
+        var path = config.tmp.index;
         for (var i = 0; i < files.length; i++) {
             files[i] = path + files[i] + "/*.html"
         };
-
-        return files;
-    };
+        return files;        
+    }
 
     // 返回模板文件
     utils.getTemplates = function(name) {

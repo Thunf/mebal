@@ -88,10 +88,10 @@ module.exports = function (gulp, $, config) {
     });
 
     // 生成内容html
-    gulp.task('md:contents', ['md:inject'], function() {
+    gulp.task('md:contents', ['md:inject', 'file:sort'], function() {
 
-        var folders = $.fs.readdirSync('src/'),
-            srcSort = $.utils.getSrcSort(folders, ['.DS_Store', 'base'], [], ['new']);
+        var sortfile = $.fs.readFileSync('gulp/config/config_sort', 'utf-8'),
+            srcSort = $.utils.fillTmpPath(sortfile.split("\n"));
 
         var stream = gulp.src(srcSort)
             .pipe($.concat('contents.html'))

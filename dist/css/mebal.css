@@ -190,6 +190,57 @@ body {
   animation-delay: .6s;
 }
 
+.demo-font-fold {
+  font-weight: bold;
+  font-family: Helvetica;
+  color: #0BB;
+}
+.demo-font-fold span {
+  position: relative;
+  display: inline-block;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-perspective: 500;
+  perspective: 500;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+.demo-font-fold span:before,
+.demo-font-fold span:after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-origin: left;
+  -ms-transform-origin: left;
+  transform-origin: left;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.demo-font-fold span:before {
+  -webkit-transform: scale(1.15, 1) skew(0, 10deg);
+  -ms-transform: scale(1.15, 1) skew(0, 10deg);
+  transform: scale(1.15, 1) skew(0, 10deg);
+  color: rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+.demo-font-fold span:after {
+  text-shadow: -1px 0 1px #AAA, 1px 0 1px #777;
+  -webkit-transform: rotateY(-45deg);
+  transform: rotateY(-45deg);
+  color: #FFF;
+  z-index: 2;
+}
+.demo-font-fold span:hover:before {
+  -webkit-transform: scale(1) skew(0);
+  -ms-transform: scale(1) skew(0);
+  transform: scale(1) skew(0);
+}
+.demo-font-fold span:hover:after {
+  -webkit-transform: rotateY(0);
+  transform: rotateY(0);
+}
+
 .demo-3d-cube.wrap {
   -webkit-perspective: 80em;
   perspective: 80em;
@@ -356,57 +407,6 @@ body {
   to {
     -webkit-transform: rotateX(-360deg);
   }
-}
-
-.demo-font-fold {
-  font-weight: bold;
-  font-family: Helvetica;
-  color: #0BB;
-}
-.demo-font-fold span {
-  position: relative;
-  display: inline-block;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-perspective: 500;
-  perspective: 500;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-}
-.demo-font-fold span:before,
-.demo-font-fold span:after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-transform-origin: left;
-  -ms-transform-origin: left;
-  transform-origin: left;
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
-}
-.demo-font-fold span:before {
-  -webkit-transform: scale(1.15, 1) skew(0, 10deg);
-  -ms-transform: scale(1.15, 1) skew(0, 10deg);
-  transform: scale(1.15, 1) skew(0, 10deg);
-  color: rgba(0, 0, 0, 0.25);
-  z-index: 1;
-}
-.demo-font-fold span:after {
-  text-shadow: -1px 0 1px #AAA, 1px 0 1px #777;
-  -webkit-transform: rotateY(-45deg);
-  transform: rotateY(-45deg);
-  color: #FFF;
-  z-index: 2;
-}
-.demo-font-fold span:hover:before {
-  -webkit-transform: scale(1) skew(0);
-  -ms-transform: scale(1) skew(0);
-  transform: scale(1) skew(0);
-}
-.demo-font-fold span:hover:after {
-  -webkit-transform: rotateY(0);
-  transform: rotateY(0);
 }
 
 .demo-circle.circle-halo {

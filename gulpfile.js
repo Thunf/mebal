@@ -1,6 +1,6 @@
 var gulp = require("gulp"),
-    config = require('./gulp/config')(),
-    $ = require('./gulp/plugins')(),
+    config = require('./gulp/config/config.js')(),
+    $ = require('./gulp/config/plugins')(),
     tasks = require('fs').readdirSync('./gulp/tasks/');
 
 // 加载任务

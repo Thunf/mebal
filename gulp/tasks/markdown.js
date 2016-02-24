@@ -26,12 +26,16 @@ module.exports = function (gulp, $, config) {
                         var fileContent = file.contents.toString('utf8'),
                         // 取得注入的文件名和后缀，记录并替换成注入标签
                         contents = fileContent.replace(injectReg, function(str, fname, ext){
-                            injectObj[folder].arr.push([fname, ext].join('.'));
+                            // 由于starttag目前无法动态修改，一直为html，故匹配时若进行泛型匹配，会导致坑多现象
+                            // 故此处强制采用.html结尾的文件
+                            if ('html' === ext) {
+                                injectObj[folder].arr.push([fname, ext].join('.'));
+                            };
                             return '<!-- inject:' + ext + ' --><!-- endinject -->';
                         }),
                         // 重新打包模板内容
                         template = [
-                            '<section class="demo-section">',
+                            '<section class="demo-section" id="' + folder + '">',
                                 '<a class="target-random" name="' + folder + '"></a>\n',
                                 md.render(contents),
                             '</section>'

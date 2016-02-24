@@ -19,7 +19,20 @@ module.exports = function(gulp, $, config) {
             $.browserSync.sockets.emit('fullscreen:message', {
                 timeout: 10,
                 script: $.utils.script(function(data) {
-                    window.location.hash = data.folder;
+
+                    (function($){
+                        if (!$) {
+                            window.location.hash = data.folder;
+                        } else {
+                            var curItem = $("#" + data.folder),
+                                curItemTop = curItem.position().top,
+                                contentTop = $("#container.container").position().top;
+                            console.log(curItemTop, contentTop);
+                            // 动
+                            $("body").scrollTop(curItemTop+contentTop);
+                            // $('body').animate({scrollTop:curItemTop+contentTop}, 100);
+                        }
+                    })(window.jQuery);
 
                     // var body = document.getElementsByTagName('body')[0];
                     // var elem = document.createElement('script');

@@ -1,3 +1,53 @@
+/*
+ * main style in mebal index.html
+ */
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+}
+.navbar {
+  margin-bottom: 0;
+}
+.demo-section {
+  margin-bottom: 40px;
+}
+.demo-section .demo-caption {
+  margin-bottom: 20px;
+}
+.demo-section .demo-code {
+  position: relative;
+}
+.demo-section .demo-code:before {
+  content: attr(data-code);
+  position: relative;
+  font-size: 90%;
+}
+.demo-section .demo-code.zeroclipboard-is-hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.demo-section .demo-code.zeroclipboard-is-hover:after {
+  content: '点击复制';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: inline-block;
+  margin: auto;
+  height: 1em;
+  line-height: 1;
+  text-align: center;
+  font-size: 30px;
+  color: #ffffff;
+}
+.demo-section .demo-code.zeroclipboard-is-active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.demo-footer {
+  margin-top: 20px;
+  padding: 30px 0;
+  border-top: 1px solid #ddd;
+}
+
 .demo-button.make-sure {
   position: relative;
   width: 12em;
@@ -53,56 +103,6 @@
 }
 .demo-button.make-sure:active {
   box-shadow: 2px 2px 1px #888;
-}
-
-/*
- * main style in mebal index.html
- */
-body {
-  font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
-}
-.navbar {
-  margin-bottom: 0;
-}
-.demo-section {
-  margin-bottom: 40px;
-}
-.demo-section .demo-caption {
-  margin-bottom: 20px;
-}
-.demo-section .demo-code {
-  position: relative;
-}
-.demo-section .demo-code:before {
-  content: attr(data-code);
-  position: relative;
-  font-size: 90%;
-}
-.demo-section .demo-code.zeroclipboard-is-hover {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-.demo-section .demo-code.zeroclipboard-is-hover:after {
-  content: '点击复制';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: inline-block;
-  margin: auto;
-  height: 1em;
-  line-height: 1;
-  text-align: center;
-  font-size: 30px;
-  color: #ffffff;
-}
-.demo-section .demo-code.zeroclipboard-is-active {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-.demo-footer {
-  margin-top: 20px;
-  padding: 30px 0;
-  border-top: 1px solid #ddd;
 }
 
 .demo-loading-hamb {
@@ -358,6 +358,57 @@ body {
   }
 }
 
+.demo-font-fold {
+  font-weight: bold;
+  font-family: Helvetica;
+  color: #0BB;
+}
+.demo-font-fold span {
+  position: relative;
+  display: inline-block;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-perspective: 500;
+  perspective: 500;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+.demo-font-fold span:before,
+.demo-font-fold span:after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform-origin: left;
+  -ms-transform-origin: left;
+  transform-origin: left;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.demo-font-fold span:before {
+  -webkit-transform: scale(1.15, 1) skew(0, 10deg);
+  -ms-transform: scale(1.15, 1) skew(0, 10deg);
+  transform: scale(1.15, 1) skew(0, 10deg);
+  color: rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+.demo-font-fold span:after {
+  text-shadow: -1px 0 1px #AAA, 1px 0 1px #777;
+  -webkit-transform: rotateY(-45deg);
+  transform: rotateY(-45deg);
+  color: #FFF;
+  z-index: 2;
+}
+.demo-font-fold span:hover:before {
+  -webkit-transform: scale(1) skew(0);
+  -ms-transform: scale(1) skew(0);
+  transform: scale(1) skew(0);
+}
+.demo-font-fold span:hover:after {
+  -webkit-transform: rotateY(0);
+  transform: rotateY(0);
+}
+
 .demo-circle.circle-halo {
   position: relative;
   width: 10em;
@@ -513,59 +564,6 @@ body {
   color: #b9b9b9;
 }
 
-.demo-font-fold {
-  font-weight: bold;
-  font-family: Helvetica;
-  color: #0BB;
-}
-.demo-font-fold span {
-  position: relative;
-  display: inline-block;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-perspective: 500;
-  perspective: 500;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-}
-.demo-font-fold span:before,
-.demo-font-fold span:after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-transform-origin: left;
-  -ms-transform-origin: left;
-  transform-origin: left;
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
-}
-.demo-font-fold span:before {
-  -webkit-transform: scale(1.15, 1) skew(0, 10deg);
-  -ms-transform: scale(1.15, 1) skew(0, 10deg);
-  transform: scale(1.15, 1) skew(0, 10deg);
-  color: rgba(0, 0, 0, 0.25);
-  z-index: 1;
-}
-.demo-font-fold span:after {
-  text-shadow: -1px 0 1px #AAA, 1px 0 1px #777;
-  -webkit-transform: rotateY(-45deg);
-  transform: rotateY(-45deg);
-  color: #FFF;
-  z-index: 2;
-}
-.demo-font-fold span:hover:before {
-  -webkit-transform: scale(1) skew(0);
-  -ms-transform: scale(1) skew(0);
-  transform: scale(1) skew(0);
-}
-.demo-font-fold span:hover:after {
-  -webkit-transform: rotateY(0);
-  transform: rotateY(0);
-}
-
-/* something */
-
 .switch-checkbox {
   position: relative;
   width: 5em;
@@ -610,3 +608,5 @@ body {
   cursor: pointer;
   z-index: 1;
 }
+
+/* something */

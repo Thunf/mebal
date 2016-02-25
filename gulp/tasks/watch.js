@@ -4,7 +4,8 @@ module.exports = function(gulp, $, config) {
     gulp.task('watch', ['html:inject'], function() {
         gulp.watch(config.sPath.js, ['js:mini']).on('change', _hash2change);
         gulp.watch(config.sPath.less, ['css:mini']).on('change', _hash2change);
-        gulp.watch([config.sPath.md, config.sPath.html, config.sort.config], ['html:contents']).on('change', _hash2change);
+        gulp.watch([config.sPath.md, config.sPath.html], ['html:contents']).on('change', _hash2change);
+        // gulp.watch([config.sPath.md, config.sPath.html, config.sort.config], ['html:contents']).on('change', _hash2change);
     }).on('task_start', function(){
         // console.log(">>> task_start", arguments);
     }).on('task_stop', function(){

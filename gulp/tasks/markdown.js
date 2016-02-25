@@ -4,87 +4,109 @@ module.exports = function (gulp, $, config) {
 
     // 编译md并注入demo
     gulp.task('md:inject', ['clean:html'], function() {
+
         var stream, path, 
             folders = $.fs.readdirSync('src/');
+
+        // 涉及到异步
+        var deferred = $.q.defer(),
+            promiseTimes = 0,
+            resolve = function(){
+                promiseTimes++;
+                if (promiseTimes >= folders.length - 2) {
+                    deferred.resolve();
+                };
+            };
 
         var injectReg = new RegExp("<!-- inject:([^\.]+)\.(\\w+) -->", "g");
         var injectObj = {};
 
-        folders.forEach(function(folder) {
-            if (-1 == ['.DS_Store', 'base'].indexOf(folder)) {
-                // 拼接文件夹路径
-                path = config.sPath.index + folder;
+        for (var i = 0, len = folders.length; i < len; i++) {
+        // folders.forEach(function(folder){
 
-                // 开始管道操作
-                stream = gulp.src(path + '/*.md')
-                    .pipe($.tap(function(file, t){
+            (function(folder){
+                if (-1 == ['.DS_Store', 'base'].indexOf(folder)) {
+                    // 拼接文件夹路径
+                    path = config.sPath.index + folder;
 
-                        // 初始化本文件夹注入记录对象
-                        injectObj[folder] = {arr: [], times: 0 };
+                    // 开始管道操作
+                    stream = gulp.src(path + '/*.md')
+                        .pipe($.tap(function(file, t){
 
-                        // 取得md文件内容
-                        var fileContent = file.contents.toString('utf8'),
-                        // 取得注入的文件名和后缀，记录并替换成注入标签
-                        contents = fileContent.replace(injectReg, function(str, fname, ext){
-                            // 由于starttag目前无法动态修改，一直为html，故匹配时若进行泛型匹配，会导致坑多现象
-                            // 故此处强制采用.html结尾的文件
-                            if ('html' === ext) {
-                                injectObj[folder].arr.push([fname, ext].join('.'));
-                            };
-                            return '<!-- inject:' + ext + ' --><!-- endinject -->';
-                        }),
-                        // 重新打包模板内容
-                        template = [
-                            '<section class="demo-section" id="' + folder + '">',
-                                '<a class="target-random" name="' + folder + '"></a>\n',
-                                md.render(contents),
-                            '</section>'
-                        ].join('\n');
+                            // 初始化本文件夹注入记录对象
+                            injectObj[folder] = {arr: [], times: 0 };
 
-                        file.contents = Buffer.concat([
-                            new Buffer(template)
-                        ]);
-                    }))
-                    // 此处为了解决注入标签错误导致注入错位问题，但又有异步的问题，待解决
-                    // .pipe($.inject(gulp.src("src/"+folder+"{"+ injectObj[folder].arr +"}"), {
-                    .pipe($.inject(gulp.src(path + '/*.html'), {
-                        relative: true,
-                        removeTags: true,
-                        starttag: function(){
-                            return '<!-- inject:{{ext}} -->';
-                        },
-                        transform: function(filePath, file, index, length, targetFile) {
+                            // 取得md文件内容
+                            var fileContent = file.contents.toString('utf8'),
+                            // 取得注入的文件名和后缀，记录并替换成注入标签
+                            contents = fileContent.replace(injectReg, function(str, fname, ext){
+                                // 由于starttag目前无法动态修改，一直为html，故匹配时若进行泛型匹配，会导致坑多现象
+                                // 故此处强制采用.html结尾的文件
+                                if ('html' === ext) {
+                                    injectObj[folder].arr.push([fname, ext].join('.'));
+                                };
+                                return '<!-- inject:' + ext + ' --><!-- endinject -->';
+                            }),
+                            // 重新打包模板内容
+                            template = [
+                                '<section class="demo-section" id="' + folder + '">',
+                                    '<a class="target-random" name="' + folder + '"></a>\n',
+                                    md.render(contents),
+                                '</section>'
+                            ].join('\n');
 
-                            // 记录当前为第几次注入[初始化为0，每次进入先自增1，从1开始]
-                            injectObj[folder].times++;
+                            file.contents = Buffer.concat([
+                                new Buffer(template)
+                            ]);
+                        }))
+                        // 此处为了解决注入标签错误导致注入错位问题，但又有异步的问题，待解决
+                        // .pipe($.inject(gulp.src("src/"+folder+"{"+ injectObj[folder].arr +"}"), {
+                        .pipe($.inject(gulp.src(path + '/*.html'), {
+                            relative: true,
+                            removeTags: true,
+                            starttag: function(){
+                                return '<!-- inject:{{ext}} -->';
+                            },
+                            transform: function(filePath, file, index, length, targetFile) {
 
-                            // 本次为第几轮注入[轮数＝注入标签数，总注入数＝匹配文件数*标签数](ceil-1是因为标签记录数组下标从0开始)
-                            var thisTime = Math.ceil(injectObj[folder].times/length)-1;
+                                // 记录当前为第几次注入[初始化为0，每次进入先自增1，从1开始]
+                                injectObj[folder].times++;
 
-                            // 若本轮匹配中，匹配到对应的html文件，则注入
-                            if (injectObj[folder].arr[thisTime] === filePath) {
-                                var template = [
-                                    '<div class="panel panel-default">',
-                                        '<div class="panel-heading">',
-                                            file.contents.toString('utf8'),
-                                        '</div>',
-                                        '<div class="panel-body">',
-                                            '<pre class="demo-code" data-code="' + $.utils.html_encode(file.contents.toString('utf8')) + '"></pre>',
-                                        '</div>',
-                                    '</div>'
-                                ];
-                                return template.join('\n');
-                            };
-                        }
-                    }))
-                    .pipe($.rename({
-                        suffix: '.md',
-                        extname: '.html'
-                    }))
-                    .pipe(gulp.dest(config.tmp.index + folder));
-            };
-        });
-        return stream;
+                                // 本次为第几轮注入[轮数＝注入标签数，总注入数＝匹配文件数*标签数](ceil-1是因为标签记录数组下标从0开始)
+                                var thisTime = Math.ceil(injectObj[folder].times/length)-1;
+
+                                // 若本轮匹配中，匹配到对应的html文件，则注入
+                                if (injectObj[folder].arr[thisTime] === filePath) {
+                                    var template = [
+                                        '<div class="panel panel-default">',
+                                            '<div class="panel-heading">',
+                                                file.contents.toString('utf8'),
+                                            '</div>',
+                                            '<div class="panel-body">',
+                                                '<pre class="demo-code" data-code="' + $.utils.html_encode(file.contents.toString('utf8')) + '"></pre>',
+                                            '</div>',
+                                        '</div>'
+                                    ];
+                                    return template.join('\n');
+                                };
+                            }
+                        }))
+                        .pipe($.rename({
+                            suffix: '.md',
+                            extname: '.html'
+                        }))
+                        .pipe(gulp.dest(config.tmp.index + folder))
+                        .pipe($.tap(function(){
+                            resolve();
+                        }));
+                };
+            })(folders[i]);
+
+        // });
+        };
+
+        return deferred.promise;
+
     });
 
     // 生成内容html

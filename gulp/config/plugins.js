@@ -6,6 +6,7 @@ module.exports = function() {
     // 加载插件
     plugins.browserSync     = require("browser-sync").create();
     plugins.fs              = require('fs');
+    plugins.q               = require('q');
     plugins.concat          = require("gulp-concat");
     plugins.rename          = require("gulp-rename");
     plugins.clean           = require("gulp-clean");

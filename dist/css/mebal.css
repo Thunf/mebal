@@ -1,3 +1,59 @@
+.demo-button.make-sure {
+  position: relative;
+  width: 12em;
+  height: 3em;
+  margin: 0 auto;
+  font-weight: bold;
+  color: #fff;
+  background: #3b7;
+  overflow: hidden;
+  cursor: pointer;
+  /*border-radius: 5px;  some BUG happened */
+}
+.demo-button.make-sure .sure {
+  position: absolute;
+  top: 0;
+  margin-left: -7em;
+  line-height: 3em;
+  opacity: .5;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.demo-button.make-sure .sure:before {
+  content: '';
+  position: absolute;
+  top: -1.5em;
+  left: -1.5em;
+  width: 6em;
+  height: 5.5em;
+  border: 2px solid #fff;
+  background-color: #345;
+  -webkit-transform: rotate(20deg);
+  transform: rotate(20deg);
+}
+.demo-button.make-sure .sure:after {
+  content: attr(data-text);
+  position: relative;
+}
+.demo-button.make-sure .make {
+  display: block;
+  width: 100%;
+  text-align: center;
+  line-height: 3em;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.demo-button.make-sure:hover .sure {
+  margin-left: .5em;
+  opacity: .8;
+}
+.demo-button.make-sure:hover .make {
+  margin-left: 2.5em;
+}
+.demo-button.make-sure:active {
+  box-shadow: 2px 2px 1px #888;
+}
+
 /*
  * main style in mebal index.html
  */
@@ -48,61 +104,159 @@ body {
   border-top: 1px solid #ddd;
 }
 
-.demo-button.make-sure {
+.demo-3d-cube.wrap {
+  -webkit-perspective: 80em;
+  perspective: 80em;
+  -webkit-perspective-origin: 50% 10em;
+  perspective-origin: 50% 10em;
+}
+.demo-3d-cube.wrap .cube {
   position: relative;
-  width: 12em;
-  height: 3em;
-  margin: 0 auto;
-  font-weight: bold;
-  color: #fff;
-  background: #3b7;
-  overflow: hidden;
-  cursor: pointer;
-  /*border-radius: 5px;  some BUG happened */
+  width: 20em;
+  height: 20em;
+  background: rgba(0, 255, 39, 0.3);
+  line-height: 1em;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-animation: spin 5s infinite linear;
+  animation: spin 5s infinite linear;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
 }
-.demo-button.make-sure .sure {
+.demo-3d-cube.wrap .cube:hover {
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+}
+.demo-3d-cube.wrap .cube div {
   position: absolute;
-  top: 0;
-  margin-left: -7em;
-  line-height: 3em;
-  opacity: .5;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  width: 20em;
+  height: 20em;
+  background: rgba(0, 255, 39, 0.2);
+  border: 1px solid #fff;
+  margin-top: -1em;
 }
-.demo-button.make-sure .sure:before {
-  content: '';
+.demo-3d-cube.wrap .cube .front {
+  -webkit-transform: translateZ(10em);
+  transform: translateZ(10em);
+}
+.demo-3d-cube.wrap .cube .back {
+  -webkit-transform: translateZ(-10em) rotateY(180deg);
+  transform: translateZ(-10em) rotateY(180deg);
+}
+.demo-3d-cube.wrap .cube .left {
+  -webkit-transform: rotateY(-90deg) translateX(-10em);
+  transform: rotateY(-90deg) translateX(-10em);
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+.demo-3d-cube.wrap .cube .right {
+  -webkit-transform: rotateY(90deg) translateX(10em);
+  transform: rotateY(90deg) translateX(10em);
+  -webkit-transform-origin: top right;
+  transform-origin: top right;
+}
+.demo-3d-cube.wrap .cube .top {
+  -webkit-transform: rotateX(-90deg) translateY(-10em);
+  transform: rotateX(-90deg) translateY(-10em);
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+}
+.demo-3d-cube.wrap .cube .bottom {
+  -webkit-transform: rotateX(90deg) translateY(10em);
+  transform: rotateX(90deg) translateY(10em);
+  -webkit-transform-origin: bottom center;
+  transform-origin: bottom center;
+}
+.demo-3d-cube.wrap .cube1 {
   position: absolute;
-  top: -1.5em;
-  left: -1.5em;
-  width: 6em;
-  height: 5.5em;
-  border: 2px solid #fff;
-  background-color: #345;
-  -webkit-transform: rotate(20deg);
-  -ms-transform: rotate(20deg);
-  transform: rotate(20deg);
+  margin: 5em;
+  width: 10em;
+  height: 10em;
+  background: rgba(40, 0, 255, 0.3);
+  line-height: 1em;
+  color: white;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform-origin: 0 5em;
+  transform-origin: 0 5em;
+  -webkit-animation: spin-vertical 5s infinite linear;
+  animation: spin-vertical 5s infinite linear;
 }
-.demo-button.make-sure .sure:after {
-  content: attr(data-text);
-  position: relative;
+.demo-3d-cube.wrap .cube1 div {
+  position: absolute;
+  width: 10em;
+  height: 10em;
+  background: rgba(40, 0, 255, 0.2);
+  border: 1px solid #fff;
+  margin-top: -1em;
 }
-.demo-button.make-sure .make {
-  display: block;
-  width: 100%;
-  text-align: center;
-  line-height: 3em;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+.demo-3d-cube.wrap .cube1 .front {
+  -webkit-transform: translateZ(5em) rotateY(0deg);
+  transform: translateZ(5em) rotateY(0deg);
 }
-.demo-button.make-sure:hover .sure {
-  margin-left: .5em;
-  opacity: .8;
+.demo-3d-cube.wrap .cube1 .back {
+  -webkit-transform: translateZ(-5em) rotateY(180deg);
+  transform: translateZ(-5em) rotateY(180deg);
 }
-.demo-button.make-sure:hover .make {
-  margin-left: 2.5em;
+.demo-3d-cube.wrap .cube1 .left {
+  -webkit-transform: rotateY(-90deg) translateX(-5em);
+  transform: rotateY(-90deg) translateX(-5em);
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
 }
-.demo-button.make-sure:active {
-  box-shadow: 2px 2px 1px #888;
+.demo-3d-cube.wrap .cube1 .right {
+  -webkit-transform: rotateY(90deg) translateX(5em);
+  transform: rotateY(90deg) translateX(5em);
+  -webkit-transform-origin: top right;
+  transform-origin: top right;
+}
+.demo-3d-cube.wrap .cube1 .top {
+  -webkit-transform: rotateX(-90deg) translateY(-5em);
+  transform: rotateX(-90deg) translateY(-5em);
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+}
+.demo-3d-cube.wrap .cube1 .bottom {
+  -webkit-transform: rotateX(90deg) translateY(5em);
+  transform: rotateX(90deg) translateY(5em);
+  -webkit-transform-origin: bottom center;
+  transform-origin: bottom center;
+}
+@keyframes spin {
+  from {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+  to {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotateY(0deg);
+  }
+  to {
+    -webkit-transform: rotateY(360deg);
+  }
+}
+@keyframes spin-vertical {
+  from {
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+  }
+  to {
+    -webkit-transform: rotateX(-360deg);
+    transform: rotateX(-360deg);
+  }
+}
+@-webkit-keyframes spin-vertical {
+  from {
+    -webkit-transform: rotateX(0);
+  }
+  to {
+    -webkit-transform: rotateX(-360deg);
+  }
 }
 
 .demo-loading-hamb {
@@ -190,174 +344,6 @@ body {
   animation-delay: .6s;
 }
 
-.demo-3d-cube.wrap {
-  -webkit-perspective: 80em;
-  perspective: 80em;
-  -webkit-perspective-origin: 50% 10em;
-  perspective-origin: 50% 10em;
-}
-.demo-3d-cube.wrap .cube {
-  position: relative;
-  width: 20em;
-  height: 20em;
-  background: purple;
-  opacity: .5;
-  line-height: 1em;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-animation: spin 5s infinite linear;
-  animation: spin 5s infinite linear;
-  -webkit-animation-play-state: paused;
-  animation-play-state: paused;
-}
-.demo-3d-cube.wrap .cube:hover {
-  -webkit-animation-play-state: running;
-  animation-play-state: running;
-}
-.demo-3d-cube.wrap .cube div {
-  position: absolute;
-  width: 20em;
-  height: 20em;
-  background: red;
-  opacity: .5;
-  border: 1px solid #fff;
-  margin-top: -1em;
-}
-.demo-3d-cube.wrap .cube .front {
-  -webkit-transform: translateZ(10em);
-  transform: translateZ(10em);
-}
-.demo-3d-cube.wrap .cube .back {
-  -webkit-transform: translateZ(-10em) rotateY(180deg);
-  transform: translateZ(-10em) rotateY(180deg);
-}
-.demo-3d-cube.wrap .cube .left {
-  -webkit-transform: rotateY(-90deg) translateX(-10em);
-  transform: rotateY(-90deg) translateX(-10em);
-  -webkit-transform-origin: center left;
-  -ms-transform-origin: center left;
-  transform-origin: center left;
-}
-.demo-3d-cube.wrap .cube .right {
-  -webkit-transform: rotateY(90deg) translateX(10em);
-  transform: rotateY(90deg) translateX(10em);
-  -webkit-transform-origin: top right;
-  -ms-transform-origin: top right;
-  transform-origin: top right;
-}
-.demo-3d-cube.wrap .cube .top {
-  -webkit-transform: rotateX(-90deg) translateY(-10em);
-  transform: rotateX(-90deg) translateY(-10em);
-  -webkit-transform-origin: top center;
-  -ms-transform-origin: top center;
-  transform-origin: top center;
-}
-.demo-3d-cube.wrap .cube .bottom {
-  -webkit-transform: rotateX(90deg) translateY(10em);
-  transform: rotateX(90deg) translateY(10em);
-  -webkit-transform-origin: bottom center;
-  -ms-transform-origin: bottom center;
-  transform-origin: bottom center;
-}
-.demo-3d-cube.wrap .cube1 {
-  position: absolute;
-  margin: 5em;
-  width: 10em;
-  height: 10em;
-  background: black;
-  opacity: .5;
-  line-height: 1em;
-  color: white;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-transform-origin: 0 5em;
-  -ms-transform-origin: 0 5em;
-  transform-origin: 0 5em;
-  -webkit-animation: spin-vertical 5s infinite linear;
-  animation: spin-vertical 5s infinite linear;
-}
-.demo-3d-cube.wrap .cube1 div {
-  position: absolute;
-  width: 10em;
-  height: 10em;
-  background: blue;
-  opacity: .5;
-  border: 1px solid #fff;
-  margin-top: -1em;
-}
-.demo-3d-cube.wrap .cube1 .front {
-  -webkit-transform: translateZ(5em) rotateY(0deg);
-  transform: translateZ(5em) rotateY(0deg);
-}
-.demo-3d-cube.wrap .cube1 .back {
-  -webkit-transform: translateZ(-5em) rotateY(180deg);
-  transform: translateZ(-5em) rotateY(180deg);
-}
-.demo-3d-cube.wrap .cube1 .left {
-  -webkit-transform: rotateY(-90deg) translateX(-5em);
-  transform: rotateY(-90deg) translateX(-5em);
-  -webkit-transform-origin: center left;
-  -ms-transform-origin: center left;
-  transform-origin: center left;
-}
-.demo-3d-cube.wrap .cube1 .right {
-  -webkit-transform: rotateY(90deg) translateX(5em);
-  transform: rotateY(90deg) translateX(5em);
-  -webkit-transform-origin: top right;
-  -ms-transform-origin: top right;
-  transform-origin: top right;
-}
-.demo-3d-cube.wrap .cube1 .top {
-  -webkit-transform: rotateX(-90deg) translateY(-5em);
-  transform: rotateX(-90deg) translateY(-5em);
-  -webkit-transform-origin: top center;
-  -ms-transform-origin: top center;
-  transform-origin: top center;
-}
-.demo-3d-cube.wrap .cube1 .bottom {
-  -webkit-transform: rotateX(90deg) translateY(5em);
-  transform: rotateX(90deg) translateY(5em);
-  -webkit-transform-origin: bottom center;
-  -ms-transform-origin: bottom center;
-  transform-origin: bottom center;
-}
-@keyframes spin {
-  from {
-    -webkit-transform: rotateY(0);
-    transform: rotateY(0);
-  }
-  to {
-    -webkit-transform: rotateY(360deg);
-    transform: rotateY(360deg);
-  }
-}
-@-webkit-keyframes spin {
-  from {
-    -webkit-transform: rotateY(0deg);
-  }
-  to {
-    -webkit-transform: rotateY(360deg);
-  }
-}
-@keyframes spin-vertical {
-  from {
-    -webkit-transform: rotateX(0);
-    transform: rotateX(0);
-  }
-  to {
-    -webkit-transform: rotateX(-360deg);
-    transform: rotateX(-360deg);
-  }
-}
-@-webkit-keyframes spin-vertical {
-  from {
-    -webkit-transform: rotateX(0);
-  }
-  to {
-    -webkit-transform: rotateX(-360deg);
-  }
-}
-
 .demo-font-fold {
   font-weight: bold;
   font-family: Helvetica;
@@ -380,14 +366,12 @@ body {
   top: 0;
   left: 0;
   -webkit-transform-origin: left;
-  -ms-transform-origin: left;
   transform-origin: left;
   -webkit-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
 }
 .demo-font-fold span:before {
   -webkit-transform: scale(1.15, 1) skew(0, 10deg);
-  -ms-transform: scale(1.15, 1) skew(0, 10deg);
   transform: scale(1.15, 1) skew(0, 10deg);
   color: rgba(0, 0, 0, 0.25);
   z-index: 1;
@@ -401,7 +385,6 @@ body {
 }
 .demo-font-fold span:hover:before {
   -webkit-transform: scale(1) skew(0);
-  -ms-transform: scale(1) skew(0);
   transform: scale(1) skew(0);
 }
 .demo-font-fold span:hover:after {
@@ -553,7 +536,6 @@ body {
 }
 .demo-button.colorful-circle:after {
   -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 .demo-button.colorful-circle:hover:before,
@@ -608,5 +590,3 @@ body {
   cursor: pointer;
   z-index: 1;
 }
-
-/* something */

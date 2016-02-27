@@ -1,0 +1,55 @@
+/*
+ * main style in mebal index.html
+ */
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', sans-serif;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.demo-section {
+    margin-bottom: 40px;
+    .demo-caption {
+        margin-bottom: 20px;
+    }
+    .demo-code {
+        position: relative;
+        &:before {
+            content: attr(data-code);
+            position: relative;
+            font-size: 90%;
+        }
+        &.zeroclipboard-is-hover {
+            background-color: rgba(0, 0, 0, 0.3);
+            &:before{
+            }
+            &:after {
+                content: '点击复制';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                display: inline-block;
+                margin: auto;
+                height: 1em;
+                line-height: 1;
+                text-align: center;
+                font-size: 30px;
+                color: rgba(255, 255, 255, 1);
+            }
+        }
+        &.zeroclipboard-is-active {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+.demo-footer {
+    margin-top: 20px;
+    padding: 30px 0;
+    border-top: 1px solid #ddd;
+}

@@ -30,9 +30,3 @@ node_modules
 .tmp
 
 .DS_Store
-
-# test gulp task
-gulp/tasks/test.js
-
-# test folder
-src/test

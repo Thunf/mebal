@@ -1,0 +1,12 @@
+{
+  "name": "ComingSoon",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "rollup -c"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "rollup-plugin-uglify": "^2.0.1"
+  }
+}
